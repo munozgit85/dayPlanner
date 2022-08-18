@@ -17,10 +17,10 @@ Bootstrap
 Moment.js
 
 # Website 
-
+https://munozgit85.github.io/dayPlanner/
 
 # Screenshot
-
+https://github.com/munozgit85/dayPlanner/blob/9ee114a86d08d3a2b894feb9b83b6b6a9b5c1a4e/screenshot.pdf
 
 # Contribution 
 Racquel Munoz
@@ -33,5 +33,5 @@ https://codepen.io/beccakroese/pen/GQgwbx
 Display the current day and time in specific format 
 https://www.w3resource.com/javascript-exercises/javascript-basic-exercise-1.php
 
-Time Difference using parseInt() and substring [duplicate]
+Time Difference using parseInt() and substring
 https://stackoverflow.com/questions/39480942/time-difference-using-parseint-and-substring
