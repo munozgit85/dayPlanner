@@ -7,6 +7,7 @@ var savedBlocks_NAME = "saved Blocks";
 
 function changeBlockColor($div, currentTime, textTime)
 {
+
     var timeCurrent = currentTime.split("");
     var timeText = textTime.split("");
 
@@ -14,32 +15,30 @@ function changeBlockColor($div, currentTime, textTime)
     {
         if(timeCurrent[timeCurrent.length - 2] > timeText[timeText.length - 2])
         {
-            console.log("p > a");
             $div.addClass("bg-secondary");
         }
         else
         {
-            console.log("p < a");
             $div.addClass("bg-primary");
         }
     }
     else
     {
-        console.log("same time of day");
-
+  
+        //if the text-input for the time placed within the hour of current time 
         var timePerHourCur = parseHour(timeCurrent);
         var timePerHourText = parseHour(timeText);
 
         if(parseInt(timePerHourCur) > parseInt(timePerHourText))
         {
-            console.log("current greater");
+            
             $div.addClass("bg-secondary");
         }
         else if(parseInt(timePerHourCur) < parseInt(timePerHourText))
         {
             if(parseInt(timePerHourText) === 12)
             {
-                console.log("current greater");
+               
                 $div.addClass("bg-secondary");
             }
             else
@@ -53,6 +52,7 @@ function changeBlockColor($div, currentTime, textTime)
             $div.addClass("bg-danger");
         }
     }
+
 }
 
 function generateHourBlock(iterations)
@@ -108,9 +108,9 @@ function incrementTextHour()
 }
 
 
-function GetCurrentHour(pFormat)
+function GetCurrentHour(timeP)
 {
-    var time = moment().format(pFormat).toLowerCase();
+    var time = moment().format(timeP).toLowerCase();
 
     time = time.split("");
 
@@ -118,20 +118,18 @@ function GetCurrentHour(pFormat)
 
     var hour = parseHour(time);
 
-    console.log(hour);
 
+// place time in pm 
     if(time[time.length - 2] === "p")
     {
-        console.log("afternoon");
         suffix = ":00pm";
     }
     else
     {
-        console.log("morning");
+   //place time in am 
         suffix = ":00am";
     }
 
-    console.log(hour + suffix);
     return hour + suffix;
 }
 
@@ -149,16 +147,16 @@ function parseHour(pTime)
     return iHour;
 }
 
-function UpdatesavedBlocks(pText, pID)
+function UpdatesavedBlocks(pText, idText)
 {
-    nBlock = {
-        id : pID,
+    inputInBlock = {
+        id : idText,
         input : pText.trim()
     }
 
     for(var i = 0; i < savedBlocks.length; i++)
     {
-        if(savedBlocks[i].id === nBlock.id)
+        if(savedBlocks[i].id === inputInBlock.id)
         {
             savedBlocks.splice(i, 1);
 
@@ -168,7 +166,7 @@ function UpdatesavedBlocks(pText, pID)
         }
     }
 
-    savedBlocks.push(nBlock);
+    savedBlocks.push(inputInBlock);
 
     localStorage.setItem(savedBlocks_NAME, JSON.stringify(savedBlocks));
 }
@@ -204,7 +202,6 @@ GetsavedBlocks();
 
 
 $(".lock").click(function() {
-    console.log("lock clicked");
 
 
     $(this).toggleClass('unlocked');
